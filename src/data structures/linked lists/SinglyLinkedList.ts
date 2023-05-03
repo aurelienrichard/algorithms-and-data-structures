@@ -16,40 +16,13 @@ export class SinglyLinkedList<T> implements LinkedList<T> {
 		this.length = 0
 	}
 
-	remove(index: number): T | undefined {
-		if (index >= this.length) return undefined
+	remove(index: number) {
+		if (index < 0 || index >= this.length) return undefined
 		if (index === 0) return this.removeFirst()
 		if (index === this.length - 1) return this.removeLast()
 
 		const [prev, curr] = this.getNodes(index) as Node<T>[]
 		prev.next = curr.next
-
-		this.length -= 1
-		return curr.value
-	}
-
-	removeFirst(): T | undefined {
-		if (!this.head) return undefined
-		if (this.length === 1) this.tail = null
-
-		const curr = this.head
-		this.head = curr.next
-		this.length -= 1
-
-		return curr.value
-	}
-
-	removeLast(): T | undefined {
-		if (!this.head) return undefined
-		const [prev, curr] = this.getNodes(this.length - 1) as Node<T>[]
-
-		if (this.length === 1) {
-			this.head = null
-			this.tail = null
-		} else {
-			this.tail = prev
-			this.tail.next = null
-		}
 
 		this.length -= 1
 		return curr.value
@@ -88,7 +61,7 @@ export class SinglyLinkedList<T> implements LinkedList<T> {
 		this.length += 1
 	}
 
-	get(index: number): T | undefined {
+	get(index: number) {
 		const [, node] = this.getNodes(index)
 		return node?.value
 	}
@@ -102,5 +75,25 @@ export class SinglyLinkedList<T> implements LinkedList<T> {
 			curr = curr.next
 		}
 		return [prev, curr]
+	}
+
+	private removeFirst() {
+		if (this.length === 1) this.tail = null
+
+		const curr = this.head as Node<T>
+		this.head = curr.next
+		this.length -= 1
+
+		return curr.value
+	}
+
+	private removeLast() {
+		const [prev, curr] = this.getNodes(this.length - 1) as Node<T>[]
+
+		this.tail = prev
+		this.tail.next = null
+
+		this.length -= 1
+		return curr.value
 	}
 }

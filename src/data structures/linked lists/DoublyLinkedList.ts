@@ -17,8 +17,8 @@ export class DoublyLinkedList<T> implements LinkedList<T> {
 		this.length = 0
 	}
 
-	remove(index: number): T | undefined {
-		if (index >= this.length) return undefined
+	remove(index: number) {
+		if (index < 0 || index >= this.length) return undefined
 		if (index === 0) return this.removeFirst()
 		if (index === this.length - 1) return this.removeLast()
 
@@ -27,35 +27,6 @@ export class DoublyLinkedList<T> implements LinkedList<T> {
 
 		prev.next = next
 		next.prev = prev
-
-		this.length -= 1
-		return curr.value
-	}
-
-	removeFirst(): T | undefined {
-		if (!this.head) return undefined
-		const curr = this.head
-
-		if (this.length === 1) {
-			this.tail = null
-			this.head = null
-		} else this.head.prev = null
-
-		this.length -= 1
-		return curr.value
-	}
-
-	removeLast(): T | undefined {
-		if (!this.tail) return undefined
-		const curr = this.tail
-
-		if (this.length === 1) {
-			this.head = null
-			this.tail = null
-		} else {
-			this.tail = curr.prev as Node<T>
-			this.tail.next = null
-		}
 
 		this.length -= 1
 		return curr.value
@@ -101,17 +72,38 @@ export class DoublyLinkedList<T> implements LinkedList<T> {
 		this.length += 1
 	}
 
-	get(index: number): T | undefined {
+	get(index: number) {
 		const node = this.getNode(index)
 		return node?.value
 	}
 
-	private getNode(index: number): Node<T> | null {
+	private getNode(index: number) {
 		let curr = this.head
 
 		for (let i = 0; curr && i < index; i += 1) {
 			curr = curr.next
 		}
 		return curr
+	}
+
+	private removeFirst() {
+		const curr = this.head as Node<T>
+
+		if (this.length === 1) this.tail = null
+		this.head = curr.next
+		if (this.head) this.head.prev = null
+
+		this.length -= 1
+		return curr.value
+	}
+
+	private removeLast() {
+		const curr = this.tail as Node<T>
+
+		this.tail = curr.prev as Node<T>
+		this.tail.next = null
+
+		this.length -= 1
+		return curr.value
 	}
 }
