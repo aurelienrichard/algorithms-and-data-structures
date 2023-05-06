@@ -33,7 +33,7 @@ export class DoublyLinkedList<T> implements LinkedList<T> {
 	}
 
 	insert(item: T, index: number) {
-		if (index > this.length) throw new Error('index out of bounds')
+		if (index > this.length) throw Error('Index out of bounds.')
 		else if (index === 0) this.prepend(item)
 		else if (index === this.length) this.append(item)
 		else {

@@ -17,7 +17,7 @@ const linkedListTest = (list: LinkedList<number>) => {
 	list.prepend(7)
 	list.prepend(9)
 	expect(list.get(1)).toBe(7)
-	expect(() => list.insert(11, 4)).toThrowError('index out of bounds')
+	expect(() => list.insert(11, 4)).toThrowError('Index out of bounds.')
 	list.insert(11, 0)
 	list.insert(4, 1)
 	list.insert(6, 5)
