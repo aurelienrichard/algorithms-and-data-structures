@@ -8,7 +8,7 @@ type Node<T> = {
 export class SinglyLinkedList<T> implements LinkedList<T> {
 	private head: Node<T> | null
 	private tail: Node<T> | null
-	public length: number
+	length: number
 
 	constructor() {
 		this.head = null

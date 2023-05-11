@@ -9,7 +9,7 @@ const linkedListTest = (list: LinkedList<number>) => {
 	list.append(9)
 	expect(list.get(2)).toBe(9)
 	expect(list.remove(1)).toBe(7)
-	expect(list.length).toBe(2)
+	expect(list).toHaveLength(2)
 	expect(list.remove(1)).toBe(9)
 	expect(list.remove(-1)).toBe(undefined)
 	expect(list.remove(0)).toBe(5)
