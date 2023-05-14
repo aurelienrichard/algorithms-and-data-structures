@@ -1,5 +1,5 @@
 import { test, expect } from 'vitest'
-import { Matrix } from '../data structures/Matrix'
+import { Matrix } from '../algorithms/Matrix'
 
 test('Matrix', () => {
 	expect(new Matrix('1').rows[0]).toEqual([1])
