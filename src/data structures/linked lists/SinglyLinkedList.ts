@@ -66,7 +66,7 @@ export class SinglyLinkedList<T> implements LinkedList<T> {
 		return node?.value
 	}
 
-	private getNodes(index: number): (Node<T> | null)[] {
+	private getNodes(index: number) {
 		let prev = this.head
 		let curr = this.head
 

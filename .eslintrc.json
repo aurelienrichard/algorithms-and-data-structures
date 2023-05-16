@@ -29,6 +29,7 @@
 			{ "exceptAfterSingleLine": true }
 		],
 		"import/prefer-default-export": "off",
-		"import/no-default-export": "error"
+		"import/no-default-export": "error",
+		"no-param-reassign": ["error", { "props": false }]
 	}
 }

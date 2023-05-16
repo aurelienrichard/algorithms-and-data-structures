@@ -1,5 +1,5 @@
 import { test, expect } from 'vitest'
-import { spaceAge } from '../algorithms/spaceAge'
+import { spaceAge } from 'algorithms/spaceAge'
 
 test('space age', () => {
 	expect(spaceAge('earth', 1000000000)).toBe(31.69)

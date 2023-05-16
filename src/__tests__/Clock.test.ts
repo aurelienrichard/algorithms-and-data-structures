@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'vitest'
-import { Clock } from '../algorithms/Clock'
+import { Clock } from 'algorithms/Clock'
 
 describe('Clock', () => {
 	test('Creating a new clock with an initial time', () => {

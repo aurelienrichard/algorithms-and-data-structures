@@ -1,5 +1,5 @@
 import { test, expect } from 'vitest'
-import { DnDCharacter } from '../algorithms/DnDCharacter'
+import { DnDCharacter } from 'algorithms/DnDCharacter'
 
 test('ability modifier', () => {
 	expect(DnDCharacter.getModifierFor(3)).toBe(-4)

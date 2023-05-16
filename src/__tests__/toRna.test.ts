@@ -1,5 +1,5 @@
 import { test, expect } from 'vitest'
-import { toRna } from '../algorithms/toRna'
+import { toRna } from 'algorithms/toRna'
 
 test('rna transcriptor', () => {
 	expect(toRna('C')).toBe('G')

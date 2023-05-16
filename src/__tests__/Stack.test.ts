@@ -1,5 +1,5 @@
 import { test, expect } from 'vitest'
-import { Stack } from '../data structures/Stack'
+import { Stack } from 'data structures/Stack'
 
 test('stack', () => {
 	const stack = new Stack<number>()

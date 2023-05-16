@@ -1,5 +1,5 @@
 import { test, expect } from 'vitest'
-import { isPangram } from '../algorithms/isPangram'
+import { isPangram } from 'algorithms/isPangram'
 
 test('pangram', () => {
 	expect(isPangram('')).toBe(false)

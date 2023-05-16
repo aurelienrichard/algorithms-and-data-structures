@@ -1,5 +1,5 @@
 import { test, expect } from 'vitest'
-import { Queue } from '../data structures/Queue'
+import { Queue } from 'data structures/Queue'
 
 test('queue', () => {
 	const queue = new Queue<number>()
