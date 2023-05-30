@@ -6,7 +6,8 @@
 		"build": "tsc --project tsconfig.build.json",
 		"watch": "tsc -w --project tsconfig.build.json",
 		"test": "vitest run",
-		"coverage": "vitest run --coverage"
+		"coverage": "vitest run --coverage",
+		"bench": "vitest bench"
 	},
 	"keywords": [],
 	"author": "",

@@ -2,7 +2,11 @@
 
 // Quick Sort sorting algorithm O(n log n)
 
-import { swap } from './swap'
+const swap = <T>(arr: T[], a: number, b: number) => {
+	const tmp = arr[a]
+	arr[a] = arr[b]
+	arr[b] = tmp
+}
 
 const partition = (arr: number[], low: number, high: number) => {
 	const pivot = arr[high]

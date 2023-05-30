@@ -8,10 +8,10 @@ export const binarySearch = (sortedArr: number[], targetValue: number) => {
 
 	while (low < high) {
 		const mid = Math.floor(low + (high - low) / 2)
-		const value = sortedArr[mid]
+		const curr = sortedArr[mid]
 
-		if (value === targetValue) return mid
-		if (value > targetValue) high = mid
+		if (curr === targetValue) return mid
+		if (curr > targetValue) high = mid
 		else low = mid + 1
 	}
 	return -1

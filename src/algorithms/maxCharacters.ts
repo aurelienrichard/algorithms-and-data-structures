@@ -13,6 +13,6 @@ export const maxCharacters = (str: string) => {
 	const chars = str.toLowerCase().match(/[a-z]/g)
 	if (!chars) throw Error('Input does not contain alphabetic characters.')
 	const counts = getCounts(chars)
-	const maxValue = Math.max(...Object.values(counts))
-	return Object.keys(counts).filter((key) => counts[key] === maxValue)
+	const maxCount = Math.max(...Object.values(counts))
+	return Object.keys(counts).filter((key) => counts[key] === maxCount)
 }
