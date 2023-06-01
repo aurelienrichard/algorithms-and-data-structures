@@ -1,3 +1,7 @@
+// TREEBREADTHFIRSTSEARCH
+
+// Breadth First Search algorithm to visit every node of a binary tree
+
 import { BinarySearchTree } from 'data structures/BinarySearchTree'
 import { Queue } from 'data structures/Queue'
 

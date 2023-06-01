@@ -9,10 +9,15 @@ const getCounts = (arr: string[]) =>
 		return counts
 	}, {})
 
+const alphabet = [...'abcdefghijklmnopqrstuvwxyz']
+
 export const maxCharacters = (str: string) => {
-	const chars = str.toLowerCase().match(/[a-z]/g)
-	if (!chars) throw Error('Input does not contain alphabetic characters.')
+	const chars = [...str.toLowerCase()].filter((c) => alphabet.includes(c))
+
+	if (!chars.length) throw Error('Input does not contain alphabetic characters.')
+
 	const counts = getCounts(chars)
 	const maxCount = Math.max(...Object.values(counts))
+
 	return Object.keys(counts).filter((key) => counts[key] === maxCount)
 }

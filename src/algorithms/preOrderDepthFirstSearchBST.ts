@@ -1,3 +1,7 @@
+// TREEDEPTHFIRSTSEARCH
+
+// Depth First Search algorithm to visit every node of a binary tree pre order
+
 import type { BinarySearchTree } from 'data structures/BinarySearchTree'
 
 export const preOrderDepthFirstSearchBST = <T>(tree: BinarySearchTree<T>) => {
