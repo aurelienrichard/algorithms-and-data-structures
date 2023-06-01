@@ -3,14 +3,7 @@ type Node<T> = {
 	next: Node<T> | null
 }
 
-interface IQueue<T> {
-	get length(): number
-	enqueue(item: T): void
-	dequeue(): T | undefined
-	peek(): T | undefined
-}
-
-export class Queue<T> implements IQueue<T> {
+export class Queue<T> {
 	private head: Node<T> | null
 	private tail: Node<T> | null
 	public length: number

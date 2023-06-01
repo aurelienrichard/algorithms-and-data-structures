@@ -3,14 +3,7 @@ type Node<T> = {
 	next: Node<T> | null
 }
 
-interface IStack<T> {
-	get length(): number
-	push(item: T): void
-	pop(): T | undefined
-	peek(): T | undefined
-}
-
-export class Stack<T> implements IStack<T> {
+export class Stack<T> {
 	private head: Node<T> | null
 	public length: number
 
@@ -19,14 +12,14 @@ export class Stack<T> implements IStack<T> {
 		this.length = 0
 	}
 
-	push(item: T): void {
+	push(item: T) {
 		const node: Node<T> = { value: item, next: this.head }
 
 		this.head = node
 		this.length += 1
 	}
 
-	pop(): T | undefined {
+	pop() {
 		if (!this.head) return undefined
 
 		const { head } = this
@@ -36,7 +29,7 @@ export class Stack<T> implements IStack<T> {
 		return head.value
 	}
 
-	peek(): T | undefined {
+	peek() {
 		return this.head?.value
 	}
 }
