@@ -1,4 +1,4 @@
-// TREEDEPTHFIRSTSEARCH
+// POSTORDERDEPTHFIRSTSEARCHBST
 
 // Depth First Search algorithm to visit every node of a binary tree post order
 

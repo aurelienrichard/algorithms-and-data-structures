@@ -15,11 +15,13 @@
 		"sourceType": "module",
 		"project": ["./tsconfig.json"]
 	},
-	"plugins": ["@typescript-eslint", "prettier"],
+	"plugins": ["@typescript-eslint"],
 	"root": true,
-	"ignorePatterns": ["node_modules", "dist", "vitest.config.ts"],
+	"ignorePatterns": ["node_modules", "dist", "coverage", "vitest.config.ts"],
 	"rules": {
-		"prettier/prettier": "error",
+		"import/prefer-default-export": "off",
+		"import/no-default-export": "error",
+		"import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
 		"no-unused-vars": "off",
 		"@typescript-eslint/no-unused-vars": "error",
 		"lines-between-class-members": "off",
@@ -28,8 +30,6 @@
 			"always",
 			{ "exceptAfterSingleLine": true }
 		],
-		"import/prefer-default-export": "off",
-		"import/no-default-export": "error",
 		"no-param-reassign": ["error", { "props": false }]
 	}
 }

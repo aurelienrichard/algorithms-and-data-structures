@@ -4,6 +4,6 @@
 // A pangram is a sentence using every letter of the alphabet at least once. It is case insensitive, so it doesn't matter if a letter is lower-case (e.g. k) or upper-case (e.g. K).
 // For this exercise we only use the basic letters used in the English alphabet: a to z.
 
-const alphabet = [...'abcdefghijklmnopqrstuvwxyz']
+const ALPHABET = [...'abcdefghijklmnopqrstuvwxyz']
 
-export const isPangram = (str: string) => alphabet.every((c) => str.toLowerCase().includes(c))
+export const isPangram = (str: string) => ALPHABET.every((c) => str.toLowerCase().includes(c))

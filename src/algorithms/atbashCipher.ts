@@ -12,21 +12,20 @@
 // Decoding 'gsvjf rxpyi ldmul cqfnk hlevi gsvoz abwlt' gives 'thequickbrownfoxjumpsoverthelazydog'
 
 const GROUP_SIZE = 5
-const alphabet = [...'abcdefghijklmnopqrstuvwxyz']
-const digits = [...'0123456789']
+const ALPHABET = [...'abcdefghijklmnopqrstuvwxyz']
 
 const transcode = (char: string) => {
-	const idx = alphabet.indexOf(char) + 1
-	if (idx) return alphabet[alphabet.length - idx]
-	return char
+	const idx = ALPHABET.indexOf(char) + 1
+
+	return idx ? ALPHABET[ALPHABET.length - idx] : char
 }
 
 export const encode = (message: string) => {
 	const encoded = [...message.toLowerCase()]
-		.filter((char) => alphabet.concat(digits).includes(char))
+		.filter((char) => /[a-z\d]/.test(char))
 		.map((char, idx) => {
-			const sameGroup = !idx || idx % GROUP_SIZE
 			const transcoded = transcode(char)
+			const sameGroup = !idx || idx % GROUP_SIZE
 
 			return sameGroup ? transcoded : transcoded.padStart(2, ' ')
 		}, '')
