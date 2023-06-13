@@ -1,7 +1,7 @@
 import { describe, test, expect } from 'vitest'
 import { encode, decode } from 'algorithms/atbashCipher'
 
-describe('Atbash Cipher', () => {
+describe('atbash cipher', () => {
 	test('encoding', () => {
 		expect(encode('yes')).toBe('bvh')
 		expect(encode('no')).toBe('ml')

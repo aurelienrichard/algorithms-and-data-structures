@@ -1,7 +1,7 @@
 import { test, expect } from 'vitest'
 import { Matrix } from 'algorithms/Matrix'
 
-test('Matrix', () => {
+test('matrix', () => {
 	expect(new Matrix('1').rows[0]).toEqual([1])
 	expect(new Matrix('1 2\n3 4').rows[1]).toEqual([3, 4])
 	expect(new Matrix('1 2\n10 20').rows[1]).toEqual([10, 20])

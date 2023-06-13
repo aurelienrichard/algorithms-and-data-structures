@@ -1,8 +1,8 @@
 import { describe, test, expect } from 'vitest'
 import { Clock } from 'algorithms/Clock'
 
-describe('Clock', () => {
-	test('Creating a new clock with an initial time', () => {
+describe('clock', () => {
+	test('creating a new clock with an initial time', () => {
 		expect(new Clock(8).toString()).toBe('08:00')
 		expect(new Clock(11, 9).toString()).toBe('11:09')
 		expect(new Clock(24, 0).toString()).toBe('00:00')
@@ -24,7 +24,7 @@ describe('Clock', () => {
 		expect(new Clock(-121, -5810).toString()).toBe('22:10')
 	})
 
-	test('Adding and subtracting minutes', () => {
+	test('adding and subtracting minutes', () => {
 		expect(new Clock(10, 0).plus(3).toString()).toBe('10:03')
 		expect(new Clock(6, 41).plus(0).toString()).toBe('06:41')
 		expect(new Clock(0, 45).plus(40).toString()).toBe('01:25')
@@ -43,7 +43,7 @@ describe('Clock', () => {
 		expect(new Clock(2, 20).minus(3000).toString()).toBe('00:20')
 	})
 
-	test('Construct two separate clocks, set times, test if they are equal', () => {
+	test('construct two separate clocks, set times, test if they are equal', () => {
 		expect(new Clock(15, 37).equals(new Clock(15, 37))).toBeTruthy()
 		expect(new Clock(15, 36).equals(new Clock(15, 37))).toBeFalsy()
 		expect(new Clock(14, 37).equals(new Clock(15, 37))).toBeFalsy()
