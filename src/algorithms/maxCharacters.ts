@@ -8,6 +8,7 @@ const ALPHABET = [...'abcdefghijklmnopqrstuvwxyz']
 const getCounts = (arr: string[]) =>
 	arr.reduce((counts: Record<string, number>, char) => {
 		counts[char] = counts[char] + 1 || 1
+
 		return counts
 	}, {})
 

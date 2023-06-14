@@ -54,6 +54,7 @@ export class BinarySearchTree<T> {
 			min = curr.data
 			curr = curr.left
 		}
+
 		return min
 	}
 }

@@ -33,6 +33,7 @@ export class DnDCharacter {
 
 	static generateAbilityScore() {
 		const dice = Array.from({ length: 4 }, () => DnDCharacter.throwDie())
+
 		return dice
 			.sort((a, b) => a - b)
 			.slice(1)

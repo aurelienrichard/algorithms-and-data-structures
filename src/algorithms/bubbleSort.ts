@@ -10,5 +10,6 @@ export const bubbleSort = (arr: number[]) => {
 			}
 		}
 	}
+
 	return arr
 }

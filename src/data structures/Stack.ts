@@ -24,8 +24,8 @@ export class Stack<T> {
 
 		const { head } = this
 		this.head = head.next
-
 		this.length -= 1
+
 		return head.value
 	}
 

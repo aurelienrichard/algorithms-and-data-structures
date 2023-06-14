@@ -14,5 +14,6 @@ export const binarySearch = (sortedArr: number[], targetValue: number) => {
 		if (curr > targetValue) high = mid
 		else low = mid + 1
 	}
+
 	return -1
 }

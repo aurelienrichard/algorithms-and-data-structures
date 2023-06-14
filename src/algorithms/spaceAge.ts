@@ -26,6 +26,8 @@ const ratios = new Map<string, number>([
 
 export const spaceAge = (planet: string, seconds: number) => {
 	if (!ratios.has(planet)) throw Error('Unknown planet.')
+
 	const ratio = ratios.get(planet) as number
+
 	return Number((seconds / EARTH_YEAR_IN_SECONDS / ratio).toFixed(2))
 }

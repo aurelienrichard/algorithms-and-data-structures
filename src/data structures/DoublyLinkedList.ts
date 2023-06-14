@@ -25,8 +25,8 @@ export class DoublyLinkedList<T> {
 
 		prev.next = next
 		next.prev = prev
-
 		this.length -= 1
+
 		return curr.value
 	}
 
@@ -52,6 +52,7 @@ export class DoublyLinkedList<T> {
 			this.tail.next = node
 			node.prev = this.tail
 		}
+
 		this.tail = node
 		this.length += 1
 	}
@@ -64,6 +65,7 @@ export class DoublyLinkedList<T> {
 			this.head.prev = node
 			node.next = this.head
 		}
+
 		this.head = node
 		this.length += 1
 	}
@@ -79,6 +81,7 @@ export class DoublyLinkedList<T> {
 		for (let i = 0; curr && i < index; i += 1) {
 			curr = curr.next
 		}
+
 		return curr
 	}
 
@@ -88,8 +91,8 @@ export class DoublyLinkedList<T> {
 		if (this.length === 1) this.tail = null
 		this.head = curr.next
 		if (this.head) this.head.prev = null
-
 		this.length -= 1
+
 		return curr.value
 	}
 
@@ -98,8 +101,8 @@ export class DoublyLinkedList<T> {
 
 		this.tail = curr.prev as Node<T>
 		this.tail.next = null
-
 		this.length -= 1
+
 		return curr.value
 	}
 }

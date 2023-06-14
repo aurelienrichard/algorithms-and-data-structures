@@ -20,5 +20,6 @@ const complements: Map<string, string> = new Map([
 export const toRna = (dna: string) =>
 	[...dna].reduce((rna, nuc) => {
 		if (!complements.has(nuc)) throw Error('Invalid input DNA.')
+
 		return rna + complements.get(nuc)
 	}, '')

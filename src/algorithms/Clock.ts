@@ -11,12 +11,14 @@ export class Clock {
 
 	constructor(hours: number, minutes = 0) {
 		const time = (hours * 60 + minutes) % MINUTES_IN_A_DAY
+
 		this.time = time < 0 ? time + MINUTES_IN_A_DAY : time
 	}
 
 	toString() {
 		const hours = Clock.format(Math.trunc(this.time / 60))
 		const minutes = Clock.format(this.time % 60)
+
 		return `${hours}:${minutes}`
 	}
 

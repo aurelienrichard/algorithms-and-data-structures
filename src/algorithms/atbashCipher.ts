@@ -1,6 +1,5 @@
 // ATBASHCIPHER
 //
-// Create an implementation of the atbash cipher, an ancient encryption system created in the Middle East.
 // The Atbash cipher is a simple substitution cipher that relies on transposing all the letters in the alphabet such that the resulting alphabet is backwards. The first letter is replaced with the last letter, the second with the second-last, and so on.
 // An Atbash cipher for the Latin alphabet would be as follows:
 // Plain:  abcdefghijklmnopqrstuvwxyz
@@ -17,7 +16,7 @@ const ALPHABET = [...'abcdefghijklmnopqrstuvwxyz']
 const transcode = (char: string) => {
 	const idx = ALPHABET.indexOf(char) + 1
 
-	return idx ? ALPHABET[ALPHABET.length - idx] : char
+	return idx ? (ALPHABET.at(-idx) as string) : char
 }
 
 export const encode = (message: string) => {
@@ -29,6 +28,7 @@ export const encode = (message: string) => {
 
 			return sameGroup ? transcoded : transcoded.padStart(2, ' ')
 		}, '')
+
 	return encoded.join('')
 }
 

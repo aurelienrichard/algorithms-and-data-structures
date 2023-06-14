@@ -21,8 +21,8 @@ export class SinglyLinkedList<T> {
 
 		const [prev, curr] = this.getNodes(index) as Node<T>[]
 		prev.next = curr.next
-
 		this.length -= 1
+
 		return curr.value
 	}
 
@@ -61,6 +61,7 @@ export class SinglyLinkedList<T> {
 
 	get(index: number) {
 		const [, node] = this.getNodes(index)
+
 		return node?.value
 	}
 
@@ -72,6 +73,7 @@ export class SinglyLinkedList<T> {
 			prev = curr
 			curr = curr.next
 		}
+
 		return [prev, curr]
 	}
 
@@ -90,8 +92,8 @@ export class SinglyLinkedList<T> {
 
 		this.tail = prev
 		this.tail.next = null
-
 		this.length -= 1
+
 		return curr.value
 	}
 }
