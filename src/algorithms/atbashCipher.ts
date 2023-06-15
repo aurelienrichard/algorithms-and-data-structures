@@ -16,7 +16,7 @@ const ALPHABET = [...'abcdefghijklmnopqrstuvwxyz']
 const transcode = (char: string) => {
 	const idx = ALPHABET.indexOf(char) + 1
 
-	return idx ? (ALPHABET.at(-idx) as string) : char
+	return idx === 0 ? char : ALPHABET[ALPHABET.length - idx]
 }
 
 export const encode = (message: string) => {
@@ -24,7 +24,7 @@ export const encode = (message: string) => {
 		.filter((char) => /[a-z\d]/.test(char))
 		.map((char, idx) => {
 			const transcoded = transcode(char)
-			const sameGroup = !idx || idx % GROUP_SIZE
+			const sameGroup = idx === 0 || idx % GROUP_SIZE
 
 			return sameGroup ? transcoded : transcoded.padStart(2, ' ')
 		}, '')

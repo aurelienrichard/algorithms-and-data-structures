@@ -4,9 +4,9 @@
 
 import type { BinarySearchTree } from 'data structures/BinarySearchTree'
 
-export const inOrderDepthFirstSearchBST = <T>(tree: BinarySearchTree<T>) => {
-	const nodes: T[] = []
-	const traverse = (node: BinarySearchTree<T>) => {
+export const inOrderDepthFirstSearchBST = (tree: BinarySearchTree) => {
+	const nodes: number[] = []
+	const traverse = (node: BinarySearchTree) => {
 		if (node.left) traverse(node.left)
 		nodes.push(node.data)
 		if (node.right) traverse(node.right)

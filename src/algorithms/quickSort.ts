@@ -2,7 +2,7 @@
 
 // Quick Sort sorting algorithm O(n log n)
 
-const swap = <T>(arr: T[], a: number, b: number) => {
+const swap = (arr: number[], a: number, b: number) => {
 	const tmp = arr[a]
 	arr[a] = arr[b]
 	arr[b] = tmp

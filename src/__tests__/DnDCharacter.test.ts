@@ -22,6 +22,7 @@ test('ability modifier', () => {
 
 test('ability generator', () => {
 	const abilityScore = DnDCharacter.generateAbilityScore()
+
 	expect(abilityScore).toBeGreaterThanOrEqual(3)
 	expect(abilityScore).toBeLessThanOrEqual(18)
 })

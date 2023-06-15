@@ -1,40 +1,40 @@
-export class BinarySearchTree<T> {
-	data: T
-	left: BinarySearchTree<T> | null
-	right: BinarySearchTree<T> | null
+export class BinarySearchTree {
+	data: number
+	left: BinarySearchTree | null
+	right: BinarySearchTree | null
 
-	constructor(data: T) {
+	constructor(data: number) {
 		this.data = data
 		this.left = null
 		this.right = null
 	}
 
-	insert(item: T) {
-		if (item <= this.data) {
-			if (!this.left) this.left = new BinarySearchTree(item)
-			else this.left.insert(item)
+	insert(value: number) {
+		if (value <= this.data) {
+			if (!this.left) this.left = new BinarySearchTree(value)
+			else this.left.insert(value)
 		} else if (!this.right) {
-			this.right = new BinarySearchTree(item)
+			this.right = new BinarySearchTree(value)
 		} else {
-			this.right.insert(item)
+			this.right.insert(value)
 		}
 	}
 
-	includes(item: T): boolean {
-		if (item === this.data) return true
-		if (item < this.data && this.left) return this.left.includes(item)
-		if (item > this.data && this.right) return this.right.includes(item)
+	includes(value: number): boolean {
+		if (value === this.data) return true
+		if (value < this.data && this.left) return this.left.includes(value)
+		if (value > this.data && this.right) return this.right.includes(value)
 
 		return false
 	}
 
-	remove(item: T): BinarySearchTree<T> | null {
-		if (item < this.data && this.left) {
-			this.left = this.left.remove(item)
+	remove(value: number): BinarySearchTree | null {
+		if (value < this.data && this.left) {
+			this.left = this.left.remove(value)
 			return this
 		}
-		if (item > this.data && this.right) {
-			this.right = this.right.remove(item)
+		if (value > this.data && this.right) {
+			this.right = this.right.remove(value)
 			return this
 		}
 		if (!this.left) return this.right
@@ -46,7 +46,7 @@ export class BinarySearchTree<T> {
 		return this
 	}
 
-	private static getSuccessor<T>(tree: BinarySearchTree<T>) {
+	private static getSuccessor(tree: BinarySearchTree) {
 		let min = tree.data
 		let curr = tree.left
 
