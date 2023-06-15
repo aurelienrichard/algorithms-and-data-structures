@@ -3,6 +3,7 @@ import { BinarySearchTree } from 'data structures/BinarySearchTree'
 
 test('binary search tree', () => {
 	const tree = new BinarySearchTree(12)
+
 	tree.remove(12)
 	expect(tree.includes(12)).toBeTruthy()
 	tree.insert(24)
