@@ -11,6 +11,7 @@ export const preOrderDepthFirstSearchBST = (tree: BinarySearchTree) => {
 		if (node.left) traverse(node.left)
 		if (node.right) traverse(node.right)
 	}
+
 	traverse(tree)
 
 	return nodes

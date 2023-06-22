@@ -11,6 +11,7 @@ export const inOrderDepthFirstSearchBST = (tree: BinarySearchTree) => {
 		nodes.push(node.data)
 		if (node.right) traverse(node.right)
 	}
+
 	traverse(tree)
 
 	return nodes

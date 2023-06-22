@@ -48,15 +48,10 @@ export class MinHeap {
 	private heapifyDown(index: number) {
 		const leftChildIndex = MinHeap.getLeftChildIndex(index)
 		const rightChildIndex = MinHeap.getRightChildIndex(index)
-
-		if (leftChildIndex >= this.length) return
-
-		const leftChild = this.data[leftChildIndex]
-		const rightChild = this.data[rightChildIndex]
 		let min = index
 
-		if (leftChild < this.data[min]) min = leftChildIndex
-		if (rightChild < this.data[min]) min = rightChildIndex
+		if (this.data[leftChildIndex] < this.data[min]) min = leftChildIndex
+		if (this.data[rightChildIndex] < this.data[min]) min = rightChildIndex
 		if (min !== index) {
 			swap(this.data, index, min)
 			this.heapifyDown(min)

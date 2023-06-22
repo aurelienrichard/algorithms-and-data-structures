@@ -6,19 +6,23 @@
 const ALPHABET = [...'abcdefghijklmnopqrstuvwxyz']
 
 const getCounts = (arr: string[]) =>
-	arr.reduce((counts: Record<string, number>, char) => {
-		counts[char] = counts[char] + 1 || 1
+	arr.reduce((counts: Map<string, number>, char) => {
+		if (counts.has(char)) {
+			const count = counts.get(char) as number
+
+			counts.set(char, count + 1)
+		} else counts.set(char, 1)
 
 		return counts
-	}, {})
+	}, new Map())
 
 export const maxCharacters = (str: string) => {
-	const chars = [...str.toLowerCase()].filter((c) => ALPHABET.includes(c))
+	const chars = [...str.toLowerCase()].filter((char) => ALPHABET.includes(char))
 
-	if (!chars.length) throw Error('Input does not contain alphabetic characters.')
+	if (chars.length === 0) throw Error('Input does not contain alphabetic characters.')
 
 	const counts = getCounts(chars)
-	const maxCount = Math.max(...Object.values(counts))
+	const maxCount = Math.max(...counts.values())
 
-	return Object.keys(counts).filter((key) => counts[key] === maxCount)
+	return [...counts.keys()].filter((key) => counts.get(key) === maxCount)
 }
