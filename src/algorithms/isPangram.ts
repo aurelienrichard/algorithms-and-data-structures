@@ -6,4 +6,5 @@
 
 const ALPHABET = [...'abcdefghijklmnopqrstuvwxyz']
 
-export const isPangram = (str: string) => ALPHABET.every((c) => str.toLowerCase().includes(c))
+export const isPangram = (str: string): boolean =>
+	ALPHABET.every((c) => str.toLowerCase().includes(c))

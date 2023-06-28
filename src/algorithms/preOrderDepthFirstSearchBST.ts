@@ -4,7 +4,7 @@
 
 import type { BinarySearchTree } from 'data structures/BinarySearchTree'
 
-export const preOrderDepthFirstSearchBST = (tree: BinarySearchTree) => {
+export const preOrderDepthFirstSearchBST = (tree: BinarySearchTree): number[] => {
 	const nodes: number[] = []
 	const traverse = (node: BinarySearchTree) => {
 		nodes.push(node.data)

@@ -15,7 +15,7 @@ export class Clock {
 		this.time = time < 0 ? time + MINUTES_IN_A_DAY : time
 	}
 
-	toString() {
+	toString(): string {
 		const hours = Clock.format(Math.trunc(this.time / 60))
 		const minutes = Clock.format(this.time % 60)
 
@@ -30,11 +30,11 @@ export class Clock {
 		return new Clock(0, this.time - minutes)
 	}
 
-	equals(clock: Clock) {
+	equals(clock: Clock): boolean {
 		return this.time === clock.time
 	}
 
-	private static format(time: number) {
+	private static format(time: number): string {
 		return String(time).padStart(2, '0')
 	}
 }

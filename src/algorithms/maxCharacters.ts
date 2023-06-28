@@ -16,7 +16,7 @@ const getCounts = (arr: string[]) =>
 		return counts
 	}, new Map())
 
-export const maxCharacters = (str: string) => {
+export const maxCharacters = (str: string): string[] => {
 	const chars = [...str.toLowerCase()].filter((char) => ALPHABET.includes(char))
 
 	if (chars.length === 0) throw Error('Input does not contain alphabetic characters.')

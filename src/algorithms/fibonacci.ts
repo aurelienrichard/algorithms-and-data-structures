@@ -7,7 +7,7 @@ const memo: Map<number, number> = new Map([
 	[2, 1]
 ])
 
-export const fibonacci = (n: number) => {
+export const fibonacci = (n: number): number => {
 	if (memo.has(n)) return memo.get(n) as number
 	memo.set(n, fibonacci(n - 1) + fibonacci(n - 2))
 

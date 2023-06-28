@@ -15,7 +15,7 @@ export class DoublyLinkedList<T> {
 		this.length = 0
 	}
 
-	remove(index: number) {
+	remove(index: number): T | undefined {
 		if (index < 0 || index >= this.length) return undefined
 		if (index === 0) return this.removeFirst()
 		if (index === this.length - 1) return this.removeLast()
@@ -30,7 +30,7 @@ export class DoublyLinkedList<T> {
 		return curr.value
 	}
 
-	insert(item: T, index: number) {
+	insert(item: T, index: number): void {
 		if (index < 0 || index > this.length) throw Error('Index out of bounds.')
 		else if (index === 0) this.prepend(item)
 		else if (index === this.length) this.append(item)
@@ -44,7 +44,7 @@ export class DoublyLinkedList<T> {
 		}
 	}
 
-	append(item: T) {
+	append(item: T): void {
 		const node: Node<T> = { value: item, prev: null, next: null }
 
 		if (!this.tail) this.head = node
@@ -57,7 +57,7 @@ export class DoublyLinkedList<T> {
 		this.length += 1
 	}
 
-	prepend(item: T) {
+	prepend(item: T): void {
 		const node: Node<T> = { value: item, prev: null, next: null }
 
 		if (!this.head) this.tail = node
@@ -70,12 +70,12 @@ export class DoublyLinkedList<T> {
 		this.length += 1
 	}
 
-	get(index: number) {
+	get(index: number): T | undefined {
 		const node = this.getNode(index)
 		return node?.value
 	}
 
-	private getNode(index: number) {
+	private getNode(index: number): Node<T> | null {
 		let curr = this.head
 
 		for (let i = 0; curr && i < index; i += 1) {
@@ -85,7 +85,7 @@ export class DoublyLinkedList<T> {
 		return curr
 	}
 
-	private removeFirst() {
+	private removeFirst(): T {
 		const curr = this.head as Node<T>
 
 		if (this.length === 1) this.tail = null
@@ -96,7 +96,7 @@ export class DoublyLinkedList<T> {
 		return curr.value
 	}
 
-	private removeLast() {
+	private removeLast(): T {
 		const curr = this.tail as Node<T>
 
 		this.tail = curr.prev as Node<T>

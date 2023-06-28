@@ -12,14 +12,14 @@ export class Stack<T> {
 		this.length = 0
 	}
 
-	push(item: T) {
+	push(item: T): void {
 		const node: Node<T> = { value: item, next: this.head }
 
 		this.head = node
 		this.length += 1
 	}
 
-	pop() {
+	pop(): T | undefined {
 		if (!this.head) return undefined
 
 		const { head } = this
@@ -29,7 +29,7 @@ export class Stack<T> {
 		return head.value
 	}
 
-	peek() {
+	peek(): T | undefined {
 		return this.head?.value
 	}
 }

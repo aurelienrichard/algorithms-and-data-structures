@@ -14,7 +14,7 @@ export class Queue<T> {
 		this.length = 0
 	}
 
-	enqueue(item: T) {
+	enqueue(item: T): void {
 		const node: Node<T> = { value: item, next: null }
 
 		if (!this.tail) this.head = node
@@ -24,7 +24,7 @@ export class Queue<T> {
 		this.length += 1
 	}
 
-	dequeue() {
+	dequeue(): T | undefined {
 		if (!this.head) return undefined
 		if (this.length === 1) this.tail = null
 
@@ -35,7 +35,7 @@ export class Queue<T> {
 		return head.value
 	}
 
-	peek() {
+	peek(): T | undefined {
 		return this.head?.value
 	}
 }

@@ -14,7 +14,7 @@ export class SinglyLinkedList<T> {
 		this.length = 0
 	}
 
-	remove(index: number) {
+	remove(index: number): T | undefined {
 		if (index < 0 || index >= this.length) return undefined
 		if (index === 0) return this.removeFirst()
 		if (index === this.length - 1) return this.removeLast()
@@ -26,7 +26,7 @@ export class SinglyLinkedList<T> {
 		return curr.value
 	}
 
-	insert(item: T, index: number) {
+	insert(item: T, index: number): void {
 		if (index < 0 || index > this.length) throw Error('Index out of bounds.')
 		else if (index === 0) this.prepend(item)
 		else if (index === this.length) this.append(item)
@@ -39,7 +39,7 @@ export class SinglyLinkedList<T> {
 		}
 	}
 
-	append(item: T) {
+	append(item: T): void {
 		const node: Node<T> = { value: item, next: null }
 
 		if (!this.tail) this.head = node
@@ -49,7 +49,7 @@ export class SinglyLinkedList<T> {
 		this.length += 1
 	}
 
-	prepend(item: T) {
+	prepend(item: T): void {
 		const node: Node<T> = { value: item, next: null }
 
 		if (!this.tail) this.tail = node
@@ -59,13 +59,13 @@ export class SinglyLinkedList<T> {
 		this.length += 1
 	}
 
-	get(index: number) {
+	get(index: number): T | undefined {
 		const [, node] = this.getNodes(index)
 
 		return node?.value
 	}
 
-	private getNodes(index: number) {
+	private getNodes(index: number): (Node<T> | null)[] {
 		let prev = this.head
 		let curr = this.head
 
@@ -77,7 +77,7 @@ export class SinglyLinkedList<T> {
 		return [prev, curr]
 	}
 
-	private removeFirst() {
+	private removeFirst(): T {
 		if (this.length === 1) this.tail = null
 
 		const curr = this.head as Node<T>
@@ -87,7 +87,7 @@ export class SinglyLinkedList<T> {
 		return curr.value
 	}
 
-	private removeLast() {
+	private removeLast(): T {
 		const [prev, curr] = this.getNodes(this.length - 1) as Node<T>[]
 
 		this.tail = prev

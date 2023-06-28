@@ -9,7 +9,7 @@ export class BinarySearchTree {
 		this.right = null
 	}
 
-	insert(value: number) {
+	insert(value: number): void {
 		if (value <= this.data) {
 			if (!this.left) this.left = new BinarySearchTree(value)
 			else this.left.insert(value)
@@ -46,7 +46,7 @@ export class BinarySearchTree {
 		return this
 	}
 
-	private static getSuccessor(tree: BinarySearchTree) {
+	private static getSuccessor(tree: BinarySearchTree): number {
 		let min = tree.data
 		let curr = tree.left
 

@@ -7,7 +7,7 @@ export class Trie {
 		this.children = new Map()
 	}
 
-	insert(str: string) {
+	insert(str: string): void {
 		if (str.length === 0) {
 			this.isWord = true
 			return
@@ -22,7 +22,7 @@ export class Trie {
 		trie.insert(str.slice(1))
 	}
 
-	remove(str: string) {
+	remove(str: string): void {
 		const node = this.getNode(str)
 
 		if (!node) return
@@ -39,7 +39,7 @@ export class Trie {
 		}
 	}
 
-	search(str: string) {
+	search(str: string): string[] {
 		const words: string[] = []
 		const node = this.getNode(str)
 

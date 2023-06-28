@@ -11,7 +11,7 @@ export class SimpleCipher {
 		this.key = key?.toLowerCase() || SimpleCipher.generateKey()
 	}
 
-	encode = (message: string) => {
+	encode = (message: string): string => {
 		const indices = this.getIndices(message)
 
 		return [...message].reduce((encoded, letter, idx) => {
@@ -22,7 +22,7 @@ export class SimpleCipher {
 		}, '')
 	}
 
-	decode = (message: string) => {
+	decode = (message: string): string => {
 		const indices = this.getIndices(message)
 
 		return [...message].reduce((decoded, letter, idx) => {
@@ -33,14 +33,14 @@ export class SimpleCipher {
 		}, '')
 	}
 
-	private getIndices = (message: string) => {
+	private getIndices = (message: string): number[] => {
 		const numberOfRepeats = Math.ceil(message.length / this.key.length)
 		const repeatedKey = this.key.repeat(numberOfRepeats).slice(0, message.length)
 
 		return [...repeatedKey].map((letter) => ALPHABET.indexOf(letter))
 	}
 
-	private static generateKey() {
+	private static generateKey(): string {
 		const getRandomLetter = () => {
 			const idx = Math.floor(Math.random() * 26)
 

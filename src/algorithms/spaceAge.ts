@@ -24,7 +24,7 @@ const ratios = new Map<string, number>([
 	['neptune', 164.79132]
 ])
 
-export const spaceAge = (planet: string, seconds: number) => {
+export const spaceAge = (planet: string, seconds: number): number => {
 	if (!ratios.has(planet)) throw Error('Unknown planet.')
 
 	const ratio = ratios.get(planet) as number

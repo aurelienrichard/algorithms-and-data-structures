@@ -31,7 +31,7 @@ export class DnDCharacter {
 		this.hitpoints = 10 + DnDCharacter.getModifierFor(this.constitution)
 	}
 
-	static generateAbilityScore() {
+	static generateAbilityScore(): number {
 		const dice = Array.from({ length: 4 }, () => DnDCharacter.throwDie())
 
 		return dice
@@ -40,11 +40,11 @@ export class DnDCharacter {
 			.reduce((sum, die) => sum + die, 0)
 	}
 
-	static getModifierFor(abilityValue: number) {
+	static getModifierFor(abilityValue: number): number {
 		return Math.floor((abilityValue - 10) / 2)
 	}
 
-	private static throwDie() {
+	private static throwDie(): number {
 		return Math.floor(Math.random() * 6 + 1)
 	}
 }

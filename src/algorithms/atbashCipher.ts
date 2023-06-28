@@ -19,7 +19,7 @@ const transcode = (char: string) => {
 	return idx === 0 ? char : ALPHABET[ALPHABET.length - idx]
 }
 
-export const encode = (message: string) => {
+export const encode = (message: string): string => {
 	const encoded = [...message.toLowerCase()]
 		.filter((char) => /[a-z\d]/.test(char))
 		.map((char, idx) => {
@@ -32,7 +32,7 @@ export const encode = (message: string) => {
 	return encoded.join('')
 }
 
-export const decode = (message: string) => {
+export const decode = (message: string): string => {
 	const decoded = [...message.replaceAll(' ', '')].map(transcode)
 
 	return decoded.join('')
