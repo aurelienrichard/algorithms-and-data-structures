@@ -33,14 +33,14 @@ export class SimpleCipher {
 		}, '')
 	}
 
-	private getIndices = (message: string): number[] => {
+	private getIndices = (message: string) => {
 		const numberOfRepeats = Math.ceil(message.length / this.key.length)
 		const repeatedKey = this.key.repeat(numberOfRepeats).slice(0, message.length)
 
 		return [...repeatedKey].map((letter) => ALPHABET.indexOf(letter))
 	}
 
-	private static generateKey(): string {
+	private static generateKey() {
 		const getRandomLetter = () => {
 			const idx = Math.floor(Math.random() * 26)
 

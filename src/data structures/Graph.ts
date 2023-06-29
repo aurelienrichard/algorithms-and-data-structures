@@ -1,22 +1,22 @@
-type Edge = {
-	to: string
+type Edge<T> = {
+	to: T
 	weight: number
 }
 
-export class Graph {
-	private adjacencyList: Map<string, Edge[]>
+export class Graph<T> {
+	private adjacencyList: Map<T, Edge<T>[]>
 
 	constructor() {
 		this.adjacencyList = new Map()
 	}
 
-	addVertex(vertex: string): void {
+	addVertex(vertex: T): void {
 		if (this.hasVertex(vertex)) return
 
 		this.adjacencyList.set(vertex, [])
 	}
 
-	removeVertex(vertex: string): void {
+	removeVertex(vertex: T): void {
 		if (!this.hasVertex(vertex)) return
 
 		this.adjacencyList.delete(vertex)
@@ -25,37 +25,37 @@ export class Graph {
 		})
 	}
 
-	hasVertex(vertex: string): boolean {
+	hasVertex(vertex: T): boolean {
 		return this.adjacencyList.has(vertex)
 	}
 
-	addEdge(source: string, destination: string, weight: number): void {
+	addEdge(source: T, destination: T, weight: number): void {
 		if (!this.areValidVertices(source, destination)) return
 		if (!this.hasEdge(source, destination)) {
-			const edges = this.adjacencyList.get(source) as Edge[]
-			const edge: Edge = { to: destination, weight }
+			const edges = this.adjacencyList.get(source) as Edge<T>[]
+			const edge: Edge<T> = { to: destination, weight }
 
 			edges.push(edge)
 		}
 	}
 
-	removeEdge(source: string, destination: string): void {
+	removeEdge(source: T, destination: T): void {
 		if (!this.areValidVertices(source, destination)) return
 		if (this.hasEdge(source, destination)) {
-			const edges = this.adjacencyList.get(source) as Edge[]
+			const edges = this.adjacencyList.get(source) as Edge<T>[]
 			const filtered = edges.filter((edge) => edge.to !== destination)
 
 			this.adjacencyList.set(source, filtered)
 		}
 	}
 
-	hasEdge(source: string, destination: string): boolean {
+	hasEdge(source: T, destination: T): boolean {
 		const edges = this.adjacencyList.get(source)
 
 		return !!edges?.some((edge) => edge.to === destination)
 	}
 
-	private areValidVertices(source: string, destination: string): boolean {
+	private areValidVertices(source: T, destination: T) {
 		return source !== destination && this.hasVertex(source) && this.hasVertex(destination)
 	}
 }

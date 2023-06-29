@@ -65,7 +65,7 @@ export class SinglyLinkedList<T> {
 		return node?.value
 	}
 
-	private getNodes(index: number): (Node<T> | null)[] {
+	private getNodes(index: number) {
 		let prev = this.head
 		let curr = this.head
 
@@ -77,7 +77,7 @@ export class SinglyLinkedList<T> {
 		return [prev, curr]
 	}
 
-	private removeFirst(): T {
+	private removeFirst() {
 		if (this.length === 1) this.tail = null
 
 		const curr = this.head as Node<T>
@@ -87,7 +87,7 @@ export class SinglyLinkedList<T> {
 		return curr.value
 	}
 
-	private removeLast(): T {
+	private removeLast() {
 		const [prev, curr] = this.getNodes(this.length - 1) as Node<T>[]
 
 		this.tail = prev

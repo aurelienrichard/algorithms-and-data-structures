@@ -75,7 +75,7 @@ export class DoublyLinkedList<T> {
 		return node?.value
 	}
 
-	private getNode(index: number): Node<T> | null {
+	private getNode(index: number) {
 		let curr = this.head
 
 		for (let i = 0; curr && i < index; i += 1) {
@@ -85,7 +85,7 @@ export class DoublyLinkedList<T> {
 		return curr
 	}
 
-	private removeFirst(): T {
+	private removeFirst() {
 		const curr = this.head as Node<T>
 
 		if (this.length === 1) this.tail = null
@@ -96,7 +96,7 @@ export class DoublyLinkedList<T> {
 		return curr.value
 	}
 
-	private removeLast(): T {
+	private removeLast() {
 		const curr = this.tail as Node<T>
 
 		this.tail = curr.prev as Node<T>

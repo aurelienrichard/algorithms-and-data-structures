@@ -5,7 +5,8 @@ import { inOrderDepthFirstSearchBST } from 'algorithms/inOrderDepthFirstSearchBS
 import { postOrderDepthFirstSearchBST } from 'algorithms/postOrderDepthFirstSearchBST'
 import { breadthFirstSearchBST } from 'algorithms/breadthFirstSearchBST'
 
-const tree = new BinarySearchTree(20)
+const comparator = (a: number, b: number) => a - b
+const tree = new BinarySearchTree<number>(20, comparator)
 tree.insert(50)
 tree.insert(100)
 tree.insert(30)

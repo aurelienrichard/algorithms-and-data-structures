@@ -34,7 +34,7 @@ export class Clock {
 		return this.time === clock.time
 	}
 
-	private static format(time: number): string {
+	private static format(time: number) {
 		return String(time).padStart(2, '0')
 	}
 }

@@ -44,7 +44,7 @@ export class DnDCharacter {
 		return Math.floor((abilityValue - 10) / 2)
 	}
 
-	private static throwDie(): number {
+	private static throwDie() {
 		return Math.floor(Math.random() * 6 + 1)
 	}
 }

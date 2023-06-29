@@ -1,30 +1,32 @@
-const swap = (arr: number[], a: number, b: number) => {
+const swap = <T>(arr: T[], a: number, b: number) => {
 	const tmp = arr[a]
 	arr[a] = arr[b]
 	arr[b] = tmp
 }
 
-export class MinHeap {
-	private data: number[]
+export class MinHeap<T> {
+	private data: T[]
+	private comparator: (a: T, b: T) => number
 
-	constructor() {
+	constructor(comparator: (a: T, b: T) => number) {
 		this.data = []
+		this.comparator = comparator
 	}
 
-	get length() {
+	get length(): number {
 		return this.data.length
 	}
 
-	insert(value: number) {
-		this.data.push(value)
+	insert(item: T): void {
+		this.data.push(item)
 		this.heapifyUp(this.length - 1)
 	}
 
-	remove() {
+	remove(): T | undefined {
 		if (this.length === 0) return undefined
 
 		const out = this.data[0]
-		const last = this.data.pop() as number
+		const last = this.data.pop() as T
 
 		if (this.length === 0) return last
 
@@ -34,26 +36,32 @@ export class MinHeap {
 		return out
 	}
 
-	private heapifyUp(index: number) {
+	private heapifyUp(index: number): void {
 		if (index === 0) return
 
+		const item = this.data[index]
 		const parentIndex = MinHeap.getParentIndex(index)
+		const parent = this.data[parentIndex]
 
-		if (this.data[index] < this.data[parentIndex]) {
+		if (this.comparator(item, parent) < 0) {
 			swap(this.data, index, parentIndex)
 			this.heapifyUp(parentIndex)
 		}
 	}
 
-	private heapifyDown(index: number) {
+	private heapifyDown(index: number): void {
 		const leftChildIndex = MinHeap.getLeftChildIndex(index)
 		const rightChildIndex = MinHeap.getRightChildIndex(index)
 		const leftChild = this.data[leftChildIndex]
 		const rightChild = this.data[rightChildIndex]
 		let min = index
 
-		if (leftChild < this.data[min]) min = leftChildIndex
-		if (rightChild < this.data[min]) min = rightChildIndex
+		if (this.comparator(leftChild, this.data[min]) < 0) {
+			min = leftChildIndex
+		}
+		if (this.comparator(rightChild, this.data[min]) < 0) {
+			min = rightChildIndex
+		}
 		if (min !== index) {
 			swap(this.data, index, min)
 			this.heapifyDown(min)

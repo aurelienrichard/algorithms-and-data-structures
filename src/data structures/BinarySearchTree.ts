@@ -1,57 +1,62 @@
-export class BinarySearchTree {
-	data: number
-	left: BinarySearchTree | null
-	right: BinarySearchTree | null
+export class BinarySearchTree<T> {
+	value: T
+	left: BinarySearchTree<T> | null
+	right: BinarySearchTree<T> | null
+	private comparator: (a: T, b: T) => number
 
-	constructor(data: number) {
-		this.data = data
+	constructor(item: T, comparator: (a: T, b: T) => number) {
+		this.value = item
 		this.left = null
 		this.right = null
+		this.comparator = comparator
 	}
 
-	insert(value: number): void {
-		if (value <= this.data) {
-			if (!this.left) this.left = new BinarySearchTree(value)
-			else this.left.insert(value)
+	insert(item: T): void {
+		const compare = this.comparator(item, this.value)
+		if (compare <= 0) {
+			if (!this.left) this.left = new BinarySearchTree(item, this.comparator)
+			else this.left.insert(item)
 		} else if (!this.right) {
-			this.right = new BinarySearchTree(value)
+			this.right = new BinarySearchTree(item, this.comparator)
 		} else {
-			this.right.insert(value)
+			this.right.insert(item)
 		}
 	}
 
-	includes(value: number): boolean {
-		if (value === this.data) return true
-		if (value < this.data && this.left) return this.left.includes(value)
-		if (value > this.data && this.right) return this.right.includes(value)
+	includes(item: T): boolean {
+		const compare = this.comparator(item, this.value)
+		if (compare === 0) return true
+		if (compare < 0 && this.left) return this.left.includes(item)
+		if (compare > 0 && this.right) return this.right.includes(item)
 
 		return false
 	}
 
-	remove(value: number): BinarySearchTree | null {
-		if (value < this.data && this.left) {
-			this.left = this.left.remove(value)
+	remove(item: T): BinarySearchTree<T> | null {
+		const compare = this.comparator(item, this.value)
+		if (compare < 0 && this.left) {
+			this.left = this.left.remove(item)
 			return this
 		}
-		if (value > this.data && this.right) {
-			this.right = this.right.remove(value)
+		if (compare > 0 && this.right) {
+			this.right = this.right.remove(item)
 			return this
 		}
 		if (!this.left) return this.right
 		if (!this.right) return this.left
 
-		this.data = BinarySearchTree.getSuccessor(this.right)
-		this.right = this.right.remove(this.data)
+		this.value = BinarySearchTree.getSuccessor(this.right)
+		this.right = this.right.remove(this.value)
 
 		return this
 	}
 
-	private static getSuccessor(tree: BinarySearchTree): number {
-		let min = tree.data
+	private static getSuccessor<T>(tree: BinarySearchTree<T>) {
+		let min = tree.value
 		let curr = tree.left
 
 		while (curr) {
-			min = curr.data
+			min = curr.value
 			curr = curr.left
 		}
 

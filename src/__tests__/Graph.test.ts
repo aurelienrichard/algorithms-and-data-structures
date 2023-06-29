@@ -2,7 +2,7 @@ import { test, expect } from 'vitest'
 import { Graph } from 'data structures/Graph'
 
 test('graph', () => {
-	const graph = new Graph()
+	const graph = new Graph<string>()
 
 	graph.addVertex('A')
 	expect(graph.hasVertex('A')).toBeTruthy()

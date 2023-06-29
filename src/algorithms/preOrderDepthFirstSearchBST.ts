@@ -4,10 +4,10 @@
 
 import type { BinarySearchTree } from 'data structures/BinarySearchTree'
 
-export const preOrderDepthFirstSearchBST = (tree: BinarySearchTree): number[] => {
-	const nodes: number[] = []
-	const traverse = (node: BinarySearchTree) => {
-		nodes.push(node.data)
+export const preOrderDepthFirstSearchBST = <T>(tree: BinarySearchTree<T>): T[] => {
+	const nodes: T[] = []
+	const traverse = (node: BinarySearchTree<T>) => {
+		nodes.push(node.value)
 		if (node.left) traverse(node.left)
 		if (node.right) traverse(node.right)
 	}

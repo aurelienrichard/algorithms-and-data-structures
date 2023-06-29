@@ -2,7 +2,8 @@ import { test, expect } from 'vitest'
 import { MinHeap } from 'data structures/MinHeap'
 
 test('min heap', () => {
-	const heap = new MinHeap()
+	const comparator = (a: number, b: number) => a - b
+	const heap = new MinHeap<number>(comparator)
 
 	expect(heap).toHaveLength(0)
 	expect(heap.remove()).toBe(undefined)
