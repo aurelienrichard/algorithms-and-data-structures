@@ -16,6 +16,7 @@ test('min heap', () => {
 	heap.insert(8)
 	heap.insert(7)
 	expect(heap).toHaveLength(8)
+	expect(heap.peek()).toBe(1)
 	expect(heap.remove()).toBe(1)
 	expect(heap.remove()).toBe(3)
 	expect(heap.remove()).toBe(4)

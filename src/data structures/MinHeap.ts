@@ -36,6 +36,10 @@ export class MinHeap<T> {
 		return out
 	}
 
+	peek(): T | undefined {
+		return this.data[0]
+	}
+
 	private heapifyUp(index: number): void {
 		if (index === 0) return
 
