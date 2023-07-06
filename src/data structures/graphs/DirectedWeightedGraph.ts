@@ -1,10 +1,12 @@
+import type { Graph } from './Graph'
+
 type Edge<T> = {
 	to: T
 	weight: number
 }
 
-export class Graph<T> {
-	private adjacencyList: Map<T, Edge<T>[]>
+export class DirectedWeightedGraph<T> implements Graph<T, Edge<T>> {
+	adjacencyList: Map<T, Edge<T>[]>
 
 	constructor() {
 		this.adjacencyList = new Map()

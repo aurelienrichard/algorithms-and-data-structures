@@ -1,9 +1,11 @@
+import type { LinkedList } from './LinkedList'
+
 type Node<T> = {
 	value: T
 	next: Node<T> | null
 }
 
-export class SinglyLinkedList<T> {
+export class SinglyLinkedList<T> implements LinkedList<T> {
 	private head: Node<T> | null
 	private tail: Node<T> | null
 	length: number
@@ -12,18 +14,6 @@ export class SinglyLinkedList<T> {
 		this.head = null
 		this.tail = null
 		this.length = 0
-	}
-
-	remove(index: number): T | undefined {
-		if (index < 0 || index >= this.length) return undefined
-		if (index === 0) return this.removeFirst()
-		if (index === this.length - 1) return this.removeLast()
-
-		const [prev, curr] = this.getNodes(index) as Node<T>[]
-		prev.next = curr.next
-		this.length -= 1
-
-		return curr.value
 	}
 
 	insert(item: T, index: number): void {
@@ -37,6 +27,18 @@ export class SinglyLinkedList<T> {
 			prev.next = node
 			this.length += 1
 		}
+	}
+
+	remove(index: number): T | undefined {
+		if (index < 0 || index >= this.length) return undefined
+		if (index === 0) return this.removeFirst()
+		if (index === this.length - 1) return this.removeLast()
+
+		const [prev, curr] = this.getNodes(index) as Node<T>[]
+		prev.next = curr.next
+		this.length -= 1
+
+		return curr.value
 	}
 
 	append(item: T): void {

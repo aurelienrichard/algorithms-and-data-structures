@@ -1,8 +1,7 @@
 import { test, expect } from 'vitest'
-import { DoublyLinkedList } from 'data structures/DoublyLinkedList'
-import { SinglyLinkedList } from 'data structures/SinglyLinkedList'
-
-type LinkedList<T> = SinglyLinkedList<T> | DoublyLinkedList<T>
+import { SinglyLinkedList } from 'data structures/linked lists/SinglyLinkedList'
+import { DoublyLinkedList } from 'data structures/linked lists/DoublyLinkedList'
+import type { LinkedList } from 'data structures/linked lists/LinkedList'
 
 const linkedListTest = (list: LinkedList<number>) => {
 	list.append(5)

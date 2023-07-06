@@ -1,8 +1,8 @@
 import { test, expect } from 'vitest'
-import { Graph } from 'data structures/Graph'
+import { DirectedWeightedGraph } from 'data structures/graphs/DirectedWeightedGraph'
 
-test('graph', () => {
-	const graph = new Graph<string>()
+test('directed weighted graph', () => {
+	const graph = new DirectedWeightedGraph<string>()
 
 	graph.addVertex('A')
 	expect(graph.hasVertex('A')).toBeTruthy()

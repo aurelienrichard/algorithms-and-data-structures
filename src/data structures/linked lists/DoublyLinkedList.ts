@@ -1,10 +1,12 @@
+import { LinkedList } from './LinkedList'
+
 type Node<T> = {
 	value: T
 	prev: Node<T> | null
 	next: Node<T> | null
 }
 
-export class DoublyLinkedList<T> {
+export class DoublyLinkedList<T> implements LinkedList<T> {
 	private head: Node<T> | null
 	private tail: Node<T> | null
 	length: number
@@ -13,6 +15,20 @@ export class DoublyLinkedList<T> {
 		this.head = null
 		this.tail = null
 		this.length = 0
+	}
+
+	insert(item: T, index: number): void {
+		if (index < 0 || index > this.length) throw Error('Index out of bounds.')
+		else if (index === 0) this.prepend(item)
+		else if (index === this.length) this.append(item)
+		else {
+			const prev = this.getNode(index - 1) as Node<T>
+			const { next } = prev as { next: Node<T> }
+			const node: Node<T> = { value: item, prev, next }
+
+			prev.next = node
+			this.length += 1
+		}
 	}
 
 	remove(index: number): T | undefined {
@@ -28,20 +44,6 @@ export class DoublyLinkedList<T> {
 		this.length -= 1
 
 		return curr.value
-	}
-
-	insert(item: T, index: number): void {
-		if (index < 0 || index > this.length) throw Error('Index out of bounds.')
-		else if (index === 0) this.prepend(item)
-		else if (index === this.length) this.append(item)
-		else {
-			const prev = this.getNode(index - 1) as Node<T>
-			const { next } = prev as { next: Node<T> }
-			const node: Node<T> = { value: item, prev, next }
-
-			prev.next = node
-			this.length += 1
-		}
 	}
 
 	append(item: T): void {
