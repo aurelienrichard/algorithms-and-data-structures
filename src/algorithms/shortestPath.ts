@@ -1,12 +1,20 @@
+// SHORTESTPATH
+
+// Dijkstra's shortest path algorithm implementation
+
 import { PriorityQueue } from 'data structures/PriorityQueue'
-import type { Graph } from 'data structures/graphs/Graph'
+import type { DirectedWeightedGraph } from 'data structures/DirectedWeightedGraph'
 
 type Edge<T> = {
 	to: T
 	weight: number
 }
 
-export const shortestPath = <T>(source: T, destination: T, graph: Graph<T, Edge<T>>): T[] => {
+export const shortestPath = <T>(
+	source: T,
+	destination: T,
+	graph: DirectedWeightedGraph<T>
+): T[] => {
 	const path: T[] = []
 	const queue = new PriorityQueue<T>()
 	const distances: Map<T, number> = new Map()

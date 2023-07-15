@@ -1,5 +1,5 @@
 import { test, expect } from 'vitest'
-import { DirectedWeightedGraph } from 'data structures/graphs/DirectedWeightedGraph'
+import { DirectedWeightedGraph } from 'data structures/DirectedWeightedGraph'
 
 test('directed weighted graph', () => {
 	const graph = new DirectedWeightedGraph<string>()

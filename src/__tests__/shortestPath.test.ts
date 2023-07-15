@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest'
 import { shortestPath } from 'algorithms/shortestPath'
-import { DirectedWeightedGraph } from 'data structures/graphs/DirectedWeightedGraph'
+import { DirectedWeightedGraph } from 'data structures/DirectedWeightedGraph'
 
 test('shortest path', () => {
 	const graph = new DirectedWeightedGraph<string>()

@@ -1,12 +1,9 @@
-import { LinkedList } from './LinkedList'
-
 type Node<T> = {
 	value: T
-	prev: Node<T> | null
 	next: Node<T> | null
 }
 
-export class DoublyLinkedList<T> implements LinkedList<T> {
+export class SinglyLinkedList<T> {
 	private head: Node<T> | null
 	private tail: Node<T> | null
 	length: number
@@ -22,9 +19,8 @@ export class DoublyLinkedList<T> implements LinkedList<T> {
 		else if (index === 0) this.prepend(item)
 		else if (index === this.length) this.append(item)
 		else {
-			const prev = this.getNode(index - 1) as Node<T>
-			const { next } = prev as { next: Node<T> }
-			const node: Node<T> = { value: item, prev, next }
+			const [prev] = this.getNodes(index) as Node<T>[]
+			const node: Node<T> = { value: item, next: prev.next }
 
 			prev.next = node
 			this.length += 1
@@ -36,72 +32,65 @@ export class DoublyLinkedList<T> implements LinkedList<T> {
 		if (index === 0) return this.removeFirst()
 		if (index === this.length - 1) return this.removeLast()
 
-		const curr = this.getNode(index) as Node<T>
-		const { prev, next } = curr as { prev: Node<T>; next: Node<T> }
-
-		prev.next = next
-		next.prev = prev
+		const [prev, curr] = this.getNodes(index) as Node<T>[]
+		prev.next = curr.next
 		this.length -= 1
 
 		return curr.value
 	}
 
 	append(item: T): void {
-		const node: Node<T> = { value: item, prev: null, next: null }
+		const node: Node<T> = { value: item, next: null }
 
 		if (!this.tail) this.head = node
-		else {
-			this.tail.next = node
-			node.prev = this.tail
-		}
+		else this.tail.next = node
 
 		this.tail = node
 		this.length += 1
 	}
 
 	prepend(item: T): void {
-		const node: Node<T> = { value: item, prev: null, next: null }
+		const node: Node<T> = { value: item, next: null }
 
-		if (!this.head) this.tail = node
-		else {
-			this.head.prev = node
-			node.next = this.head
-		}
+		if (!this.tail) this.tail = node
+		else node.next = this.head
 
 		this.head = node
 		this.length += 1
 	}
 
 	get(index: number): T | undefined {
-		const node = this.getNode(index)
+		const [, node] = this.getNodes(index)
+
 		return node?.value
 	}
 
-	private getNode(index: number) {
+	private getNodes(index: number) {
+		let prev = this.head
 		let curr = this.head
 
 		for (let i = 0; curr && i < index; i += 1) {
+			prev = curr
 			curr = curr.next
 		}
 
-		return curr
+		return [prev, curr]
 	}
 
 	private removeFirst() {
-		const curr = this.head as Node<T>
-
 		if (this.length === 1) this.tail = null
+
+		const curr = this.head as Node<T>
 		this.head = curr.next
-		if (this.head) this.head.prev = null
 		this.length -= 1
 
 		return curr.value
 	}
 
 	private removeLast() {
-		const curr = this.tail as Node<T>
+		const [prev, curr] = this.getNodes(this.length - 1) as Node<T>[]
 
-		this.tail = curr.prev as Node<T>
+		this.tail = prev
 		this.tail.next = null
 		this.length -= 1
 
