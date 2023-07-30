@@ -28,7 +28,7 @@ export const shortestPath = <T>(
 		previous.set(vertex, null)
 	})
 
-	while (queue.length) {
+	while (queue.length !== 0) {
 		const current = queue.dequeue() as T
 		const edges = graph.adjacencyList.get(current) as Edge<T>[]
 

@@ -10,7 +10,7 @@ export const breadthFirstSearchBST = <T>(tree: BinarySearchTree<T>): T[] => {
 	const queue = new Queue()
 	queue.enqueue(tree)
 
-	while (queue.length) {
+	while (queue.length !== 0) {
 		const node = queue.dequeue() as BinarySearchTree<T>
 		nodes.push(node.value)
 
